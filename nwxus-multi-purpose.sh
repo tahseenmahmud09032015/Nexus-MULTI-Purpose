@@ -293,7 +293,6 @@ command_engine() {
 # MENU 7: MULTI VPS MANAGER INTEGRATION (QEMU / Cloud-Init VM Suite)
 # ==============================================================================
 multi_vps_manager() {
-    # Check dependencies for Multi-VM manager
     local deps=("qemu-system-x86_64" "wget" "cloud-localds" "qemu-img")
     local missing_deps=()
     
@@ -310,7 +309,6 @@ multi_vps_manager() {
         return
     fi
 
-    # Initialize paths & configs
     local vm_mgr_dir="${VM_DIR:-$HOME/vms}"
     mkdir -p "$vm_mgr_dir"
 
@@ -324,20 +322,6 @@ multi_vps_manager() {
         ["AlmaLinux 9"]="almalinux|9|https://repo.almalinux.org/almalinux/9/cloud/x86_64/images/AlmaLinux-9-GenericCloud-latest.x86_64.qcow2|almalinux9|alma|alma"
         ["Rocky Linux 9"]="rockylinux|9|https://download.rockylinux.org/pub/rocky/9/images/x86_64/Rocky-9-GenericCloud.latest.x86_64.qcow2|rocky9|rocky|rocky"
     )
-
-    # Helper functions local to Multi-VM Manager
-    local_print_status() {
-        local type=$1
-        local message=$2
-        case $type in
-            "INFO") echo -e "\033[1;34m[INFO]\033[0m $message" ;;
-            "WARN") echo -e "\033[1;33m[WARN]\033[0m $message" ;;
-            "ERROR") echo -e "\033[1;31m[ERROR]\033[0m $message" ;;
-            "SUCCESS") echo -e "\033[1;32m[SUCCESS]\033[0m $message" ;;
-            "INPUT") echo -e "\033[1;36m[INPUT]\033[0m $message" ;;
-            *) echo "[$type] $message" ;;
-        esloan_dummy=""
-    }
 
     local_validate_input() {
         local type=$1
@@ -353,7 +337,6 @@ multi_vps_manager() {
                 if ! [[ "$value" =~ ^[a-zA-Z0-9_-]+$ ]]; then echo -e "\033[1;31m[ERROR]\033[0m VM name can only contain letters, numbers, hyphens, and underscores"; return 1; fi ;;
             "username")
                 if ! [[ "$value" =~ ^[a-z_][a-z0-9_-]*$ ]]; then echo -e "\033[1;31m[ERROR]\033[0m Username must start with a letter/underscore and contain valid characters"; return 1; fi ;;
-        end
         esac
         return 0
     }
@@ -528,11 +511,10 @@ EOF
         fi
     }
 
-    # Main Submenu Loop for Multi-VM Manager
     while true; do
         clear
         echo -e "${RED}================================================================${NC}"
-        echo -e "                 ${CYAN}[ MULTI VM MANAGER ]${NC}"
+        echo -e "                 ${CYAN}[ MULTI VPS MANAGER ]${NC}"
         echo -e "${RED}================================================================${NC}"
         
         local vms=($(get_vm_list))
@@ -578,7 +560,7 @@ EOF
             4)
                 if [ $vm_count -gt 0 ]; then
                     read -p "Enter VM number to delete: " vm_num
-                    [[ "$vm_num" =~ ^[0-9]+$ ]] && [ "$vm_num" -ge 1 ] && [ "$vm_num" -le $vm_count ] && delete_vm "${vms[$((vm_num-1))]}"
+                    [[ "$vm_num" =~ ^[0-9]+$ ]] && [ "$vm_num" -ge 1 ]] && [ "$vm_num" -le $vm_count ] && delete_vm "${vms[$((vm_num-1))]}"
                 fi
                 ;;
             *) sleep 1 ;;
