@@ -1,6 +1,6 @@
 <div align="center">
 
-<!-- Banner Image (Custom SVG Banner Generator) -->
+<!-- Fixed Animated Waving Banner -->
 <img src="https://capsule-render.vercel.app/api?type=waving&color=0:00c6ff,100:0072ff&height=220&section=header&text=NEXUS%20MULTI-PURPOSE&fontSize=42&fontColor=ffffff&fontAlignY=40&desc=The%20Ultimate%20Real-Time%20Bash%20CLI%20Suite%20%26%20VM%20Manager&descSize=18&descAlignY=62" width="100%" alt="Nexus Banner"/>
 
 <br/>
@@ -10,7 +10,7 @@
 
 <br/>
 
-<!-- Large Block Badges (Exact PROXI style) -->
+<!-- Large Block Badges -->
 [![Stars](https://img.shields.io/badge/STARS-0-yellow?style=for-the-badge&logo=github)](https://github.com/tahseenmahmud09032015/Nexus-MULTI-Purpose)
 [![License](https://img.shields.io/badge/LICENSE-MIT-red?style=for-the-badge)](https://github.com/tahseenmahmud09032015/Nexus-MULTI-Purpose/blob/main/Licence.md)
 [![Last Commit](https://img.shields.io/badge/LAST_COMMIT-OCTOBER-0072ff?style=for-the-badge)](https://github.com/tahseenmahmud09032015/Nexus-MULTI-Purpose)
